@@ -14,3 +14,11 @@ lastName = 'Kowalski';
 console.log(lastName);
 
 console.groupEnd();
+
+console.group('Stałe');
+const APP_VERSION = 'v1.4.3';
+console.log(APP_VERSION);
+
+
+
+console.groupEnd();

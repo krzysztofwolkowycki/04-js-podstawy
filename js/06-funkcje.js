@@ -49,6 +49,7 @@ console.groupEnd();
 
 console.group('Rekurencje');
 function silnia(num) {
+    //return 1 === num ? num : num * silnia(num - 1);
     if (1 == num){
         return num;
     }

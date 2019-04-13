@@ -31,49 +31,49 @@ console.group('Domknięcia - wzorzec factory');
 console.groupEnd();
 
 console.group('Domknięcia - przykład interfejsu');
+(function () {
 
-    (function (){
+    var tripManager = (function () {
+        var members = [];
+        var membersLimit = 10;
+        var ageLimit = 18;
 
-        var tripManager = (function (){
-            var members = [];
-            var membersLimit = 10;
-            var ageLimit = 18;
+        var hasFreePlace = function () {
+            return members.length < membersLimit;
+        };
 
-            var hasFreePlace = function (){
-                return members.length < membersLimit;
-            };
-            
-            var isValidAge = function () {
-                return age >= ageLimit;
-            };
+        var isValidAge = function (age) {
+            return age >= ageLimit;
+        };
 
-            var addMember = function (name, age){
-                if (!hasFreePlace()) {
-                    throw Error ('Brak wolnych miejsc');
-                }
-                if (!isValidAge(age)){
-                    throw Error ('Za młody jesteś')
-                }
+        var addMember = function (name, age) {
+            if (!hasFreePlace()) {
+                throw Error ("Brak wolnych miejsc");
+            }
 
-                members.push(name);
-                return true;
-            };
+            if (!isValidAge(age)) {
+                throw Error ("Za młody jesteś!");
+            }
 
-            var removeMember = function (name){
+            members.push(name);
 
-            };
+            return true;
+        };
 
-            var getFreePlacecCount = function (){
-                return membersLimit = members.length;
-            };
-            return {
-                add: addMember
-            };
-        })();
+        var getFreePlacesCount = function () {
+            return membersLimit - members.length;
+        };
 
-        console.log(tripManager);
-        tripManager.add('Jan', 18);
-        tripManager.add('Monika', 16);
+        return {
+            add: addMember
+        };
     })();
 
+    console.log(tripManager);
+
+    tripManager.add('Jan', 19);
+    // tripManager.add('Monika', 17);
+
+
+})();
 console.groupEnd();
